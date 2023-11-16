@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"log"
 	"strings"
 
 	"tsatu/constants"
@@ -17,10 +17,8 @@ func main() {
 
 	var result model.URLSet
 
-	fmt.Println("Parse Started")
-
 	if xmlBytes, err := util.GetHTTPContent(constants.SeenUnseenURL); err != nil {
-		log.Printf("Failed to get XML: %v", err)
+		fmt.Printf("Failed to get XML: %v", err)
 	} else {
 		xml.Unmarshal(xmlBytes, &result)
 	}
@@ -30,7 +28,6 @@ func main() {
 	for _, url := range result.URLS {
 		if strings.Contains(url.Location, "episodes") {
 			urlsToParse = append(urlsToParse, url.Location)
-			// fmt.Println(url.Location)
 		}
 	}
 
@@ -39,7 +36,7 @@ func main() {
 
 	for i := 0; i < len(urlsToParse); i++ {
 		if urlContent, err := util.GetHTTPContent(urlsToParse[i]); err != nil {
-			log.Printf("Failed to get XML: %v", err)
+			fmt.Printf("Failed to get XML: %v", err)
 		} else {
 			identifiedURLS = append(identifiedURLS, rxRelaxed.FindAllString(string(urlContent), -1)...)
 		}
@@ -73,7 +70,10 @@ func main() {
 		}
 	}
 
-	for url, count := range urlMap {
-		fmt.Println(url, count)
+	jsonString, err := json.Marshal(urlMap)
+	if err != nil {
+		fmt.Println("Error")
 	}
+
+	fmt.Println(string(jsonString))
 }
