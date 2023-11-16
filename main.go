@@ -48,7 +48,20 @@ func main() {
 	urlMap := make(map[string]int)
 
 	for _, url := range identifiedURLS {
-		if strings.Contains(url, "https://www.amazon.in") || strings.Contains(url, "https://amazon.in") || strings.Contains(url, "https://amazon.com") || strings.Contains(url, "https://www.amazon.com") {
+		if strings.Contains(url, "https://www.amazon.in") ||
+			strings.Contains(url, "https://amazon.in") ||
+			strings.Contains(url, "https://amazon.com") ||
+			strings.Contains(url, "https://www.amazon.com") ||
+			strings.Contains(url, "https://amzn.eu") ||
+			strings.Contains(url, "https://amzn.to") {
+
+			if strings.Contains(url, "https://amzn.eu") || strings.Contains(url, "https://amzn.to") {
+				unshortenedURL, err := util.UnshortenURL(url)
+				if err != nil {
+					fmt.Printf("Unable to shorten url - %s", url)
+				}
+				url = unshortenedURL
+			}
 
 			sanitizedURL, _ := util.SanitizeURL(url)
 
@@ -57,9 +70,7 @@ func main() {
 			} else {
 				urlMap[sanitizedURL] = count + 1
 			}
-
 		}
-
 	}
 
 	for url, count := range urlMap {
