@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-// tweaked from: https://stackoverflow.com/a/42718113/1170664
-func GetXML(url string) ([]byte, error) {
+// Tweaked from: https://stackoverflow.com/a/42718113/1170664
+func GetHTTPContent(url string) ([]byte, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return []byte{}, fmt.Errorf("GET error: %v", err)
@@ -19,6 +19,7 @@ func GetXML(url string) ([]byte, error) {
 	}
 
 	data, err := io.ReadAll(resp.Body)
+	resp.Body.Close()
 	if err != nil {
 		return []byte{}, fmt.Errorf("Read body: %v", err)
 	}
