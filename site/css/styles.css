@@ -1,0 +1,10 @@
+/* styles.css */
+.thumbnail {
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .detail {
+    margin-top: 20px;
+  }
+  

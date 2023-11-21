@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "Title": "Harry Potter and the Prisoner of Azkaban (Harry Potter, Book 3) (MinaLima Edition)",
+      "Description": "The third book in the Harry Potter series, illustrated in brilliant full color by MinaLima and featuring eight exclusive interactive elements, including the Marauder’s Map and more!",
+      "Author": "J. K. RowlingMinalima Design",
+      "Rating": "4.8 out of 5 stars",
+      "Images": [
+        "https://m.media-amazon.com/images/I/61iH2KnUNzL._SY445_SX342_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SL1038_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SY342_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SY522_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SY385_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SY466_.jpg",
+        "https://m.media-amazon.com/images/I/71NaVwWsRDL._SY425_.jpg"
+      ],
+      "URL": "https://www.amazon.in/dp/1338815288/",
+      "Publisher": "Scholastic Inc.; Illustrated edition (3 October 2023)",
+      "Language": "English",
+      "ISBN10": "1338815288",
+      "ISBN13": "978-1338815283"
+    },
+    {
+      "Title": "In Service of the Republic: The Art and Science of Economic Policy",
+      "Description": "As a $3-trillion economy, India is on her way to becoming an economic superpower. Between 1991 and 2011, the period of our best growth, there was also a substantial decline in the number of people below the poverty line.Since 2011, however, there has been a marked retreat in the high growth performance of the previous two decades.What happened to the promise? Where have we faltered? How do we change course? How do we overcome the ever-present dangers of the middle-income trap, and get rich before we grow old? And one question above all else: What do we need to do to make our tryst with destiny?As professional economists as well as former civil servants, Vijay Kelkar and Ajay Shah have spent most of their lives thinking about and working on these questions. The result:",
+      "Author": "Vijay KelkarAjay Shah",
+      "Rating": "4.6 out of 5 stars",
+      "Images": [
+        "https://m.media-amazon.com/images/I/51oVKfZKcmL._SY445_SX342_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SY342_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SY522_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SY385_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SY425_.jpg",
+        "https://m.media-amazon.com/images/I/710cwj0RqkL._SY466_.jpg"
+      ],
+      "URL": "https://www.amazon.in/dp/B081HXR95C",
+      "Publisher": "B081HXR95C",
+      "Language": "Allen Lane (6 December 2019)",
+      "ISBN10": "943 KB",
+      "ISBN13": "Enabled"
+    }
+  ]
+}
