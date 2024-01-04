@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"tsatu/constants"
+	"tsatu/controller"
 	"tsatu/model"
 	"tsatu/util"
 
@@ -35,6 +36,7 @@ func main() {
 	var identifiedURLS []string
 
 	for i := 0; i < len(urlsToParse); i++ {
+		fmt.Printf("\n Currently parsing URL - %s", urlsToParse[i])
 		if urlContent, err := util.GetHTTPContent(urlsToParse[i]); err != nil {
 			fmt.Printf("Failed to get XML: %v", err)
 		} else {
@@ -44,7 +46,10 @@ func main() {
 
 	urlMap := make(map[string]int)
 
+	fmt.Printf("\n Currently parsing URL contents")
+
 	for _, url := range identifiedURLS {
+
 		if strings.Contains(url, "https://www.amazon.in") ||
 			strings.Contains(url, "https://amazon.in") ||
 			strings.Contains(url, "https://amazon.com") ||
@@ -79,30 +84,46 @@ func main() {
 			continue
 		}
 
-		if strings.Contains(url, "/e/") {
+		if strings.Contains(url, "/e/") || strings.Contains(url, "/author/") {
 			authors = append(authors, model.AuthorCount{AuthorURL: url, Count: count})
 		} else {
 			books = append(books, model.BookCount{BookURL: url, Count: count})
 		}
 	}
 
-	bookData, err := json.Marshal(books)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Println(string(bookData))
-
-	authorData, err := json.Marshal(authors)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Println(string(authorData))
-
-	// for url, _ := range urlMap {
-	// 	controller.FetchAmazonProductDetails(url)
+	// bookData, err := json.Marshal(books)
+	// if err != nil {
+	// 	fmt.Println("Error:", err)
+	// 	return
 	// }
+
+	// fmt.Println(string(bookData))
+
+	// authorData, err := json.Marshal(authors)
+	// if err != nil {
+	// 	fmt.Println("Error:", err)
+	// 	return
+	// }
+
+	// fmt.Println(string(authorData))
+
+	var products []model.Product
+	for _, book := range books {
+		product, err := controller.FetchAmazonProductDetails(book.BookURL)
+		if err != nil {
+			fmt.Errorf("Error fetching amazon product details. Error - %w", err)
+		} else {
+			products = append(products, *product)
+		}
+	}
+
+	amazonBooks := model.AmazonProducts{Books: products}
+	amznbookData, err := json.Marshal(amazonBooks)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(string(amznbookData))
+
 }

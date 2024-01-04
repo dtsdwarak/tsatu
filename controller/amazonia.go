@@ -1,22 +1,27 @@
 package controller
 
 import (
-	"fmt"
+	"encoding/json"
+	"tsatu/model"
 	"tsatu/util"
 
 	"github.com/pkg/errors"
 )
 
-func FetchAmazonProductDetails(url string) error {
+func FetchAmazonProductDetails(url string) (*model.Product, error) {
 
 	amazoniaURL := "http://localhost:8080/product?requestURL=" + url
 
 	bytes, err := util.GetHTTPContent(amazoniaURL)
 	if err != nil {
-		return errors.Wrapf(err, "Error fetching Amazon product details.")
+		return nil, errors.Wrapf(err, "Error fetching Amazon product details.")
 	}
 
-	fmt.Println("String =", string(bytes))
+	var product model.Product
+	err = json.Unmarshal(bytes, &product)
+	if err != nil {
+		return nil, errors.Wrapf(err, "Error unmarshalling amazon product details.")
+	}
 
-	return nil
+	return &product, nil
 }

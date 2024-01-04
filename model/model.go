@@ -41,12 +41,16 @@ func (v *URL) String() string {
 }
 
 type Product struct {
-	Title       string
-	Description string
-	Author      string
-	Rating      string
-	Images      []string
-	URL         string
+	Title       string   `json:"Title"`
+	Description string   `json:"Description"`
+	Author      string   `json:"Author"`
+	Rating      string   `json:"Rating"`
+	Images      []string `json:"Images"`
+	URL         string   `json:"URL"`
+}
+
+type AmazonProducts struct {
+	Books []Product `json:"Books"`
 }
 
 type BookCount struct {
