@@ -9,3 +9,10 @@ ___To Be Updated Soon___
 ```bash
 $ go run main.go | tee logs
 ```
+
+If you want to parse the log data by printing the book and author information as json, try this 
+
+```bash
+$ go run main.go | tee logs
+$ cat logs | head -1 | jq -s '.[] | sort_by(.count)' # This is for books
+```

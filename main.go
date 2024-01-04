@@ -70,10 +70,39 @@ func main() {
 		}
 	}
 
-	jsonString, err := json.Marshal(urlMap)
-	if err != nil {
-		fmt.Println("Error")
+	var books []model.BookCount
+	var authors []model.AuthorCount
+	for url, count := range urlMap {
+
+		// This should ideally not be required. But finding this on a huge scale. Hence, cancelling.
+		if strings.Compare(url, "https://www.amazon.in/s") == 0 {
+			continue
+		}
+
+		if strings.Contains(url, "/e/") {
+			authors = append(authors, model.AuthorCount{AuthorURL: url, Count: count})
+		} else {
+			books = append(books, model.BookCount{BookURL: url, Count: count})
+		}
 	}
 
-	fmt.Println(string(jsonString))
+	bookData, err := json.Marshal(books)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(string(bookData))
+
+	authorData, err := json.Marshal(authors)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+
+	fmt.Println(string(authorData))
+
+	// for url, _ := range urlMap {
+	// 	controller.FetchAmazonProductDetails(url)
+	// }
 }

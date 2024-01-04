@@ -39,3 +39,22 @@ func (v *URL) String() string {
 	}
 	return fmt.Sprintf("URL := Location = %s, LastMod = %s", v.Location, v.LastMod)
 }
+
+type Product struct {
+	Title       string
+	Description string
+	Author      string
+	Rating      string
+	Images      []string
+	URL         string
+}
+
+type BookCount struct {
+	BookURL string `json:"bookURL"`
+	Count   int    `json:"count"`
+}
+
+type AuthorCount struct {
+	AuthorURL string `json:"authorURL"`
+	Count     int    `json:"count"`
+}

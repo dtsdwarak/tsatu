@@ -230,4 +230,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Logs
+logs*
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,goland,go,visualstudiocode,linux,windows
