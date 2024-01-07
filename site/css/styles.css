@@ -1,10 +1,32 @@
 /* styles.css */
 .thumbnail {
-    margin: 10px;
+    margin: 1%;
     cursor: pointer;
   }
   
   .detail {
-    margin-top: 20px;
+    margin-top: 1%;
+  }
+
+  .bookContainer {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+    text-align: center;
+    padding-left: 5%;
   }
   
+  img {
+    width: 80%;
+    height: 3%;
+    object-fit: cover;
+  }
+
+.brightness {
+    background-color: white;
+    display: inline-block;
+
+}
+.brightness img:hover {
+    opacity: 0.4;
+}

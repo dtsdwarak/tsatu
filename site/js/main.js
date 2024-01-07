@@ -11,8 +11,8 @@ $(document).ready(function() {
           return;
         }
 
-        let thumbnail = $('<div class="col-md-3 thumbnail">');
-        thumbnail.append('<img src="' + book.Images[0] + '" alt="' + book.Title + '" class="img-fluid">');
+        let thumbnail = $('<div class="col-md-2 thumbnail brightness">');
+        thumbnail.append('<img src="' + book.Images[3] + '" alt="' + book.Title + '" class="img-fluid">');
         thumbnail.append('<p>' + book.Title + '</p>');
         thumbnail.click(function() {
           // Redirect to detail page with book index
